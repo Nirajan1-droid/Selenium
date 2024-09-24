@@ -1,3 +1,5 @@
-# Automation Code for Govenemental Website.
+# Automation Code for IEX INDIA.
 
-Not meant for everyone.
+'''
+ pip install selenium webdriver_manager csv
+'''
