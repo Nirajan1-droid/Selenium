@@ -1,5 +1,5 @@
 # Code for IEX INDIA.
 
 ```
- pip install selenium webdriver_manager csv
+ pip install selenium webdriver_manager 
  ```
