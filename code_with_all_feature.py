@@ -312,26 +312,28 @@ try:
         for key, value in from_which_month.items():
             print(f"{key}: {value}")
         from_month = int(input("Enter the start month: ")) -1 
-        from_month_dropdown = wait_for_element('#ctl00_InnerContent_ddlFrom')
-        Select(from_month_dropdown).select_by_index(from_month)
 
-
-        time.sleep(3)
-        update_report_buttons = wait_for_element('#ctl00_InnerContent_btnUpdateReport', timeout=10)
-        update_report_buttons.click()
-        
         print("\nTo which month?")
         for key, value in to_which_month.items():
             print(f"{key}: {value}")
         to_month = int(input("Enter the end month: ")) -1 
-        to_month_dropdown = wait_for_element('#ctl00_InnerContent_ddlTo')
-        Select(to_month_dropdown).select_by_index(to_month)
-        time.sleep(5)
-        
+
         print("\nFor which year?")
         for key, value in Delivery_period_year.items():
             print(f"{key}: {value}")
         year = input("Enter the year: ")
+        from_month_dropdown = wait_for_element('#ctl00_InnerContent_ddlFrom')
+        Select(from_month_dropdown).select_by_index(from_month)
+
+
+        time.sleep(2)
+        update_report_buttons = wait_for_element('#ctl00_InnerContent_btnUpdateReport', timeout=10)
+        update_report_buttons.click()
+        
+        to_month_dropdown = wait_for_element('#ctl00_InnerContent_ddlTo')
+        Select(to_month_dropdown).select_by_index(to_month)
+        time.sleep(1)
+        
         
         logging.info(f"Selecting delivery period for Monthly: From {from_month} To {to_month}, Year: {year}")
         nameoffile = 'Monthly_record_from_'+from_which_month[str(from_month)]+'_to_'+to_which_month[str(to_month)]+'_of_year_'+Delivery_period_year[str(year)] +'_extracted_in' + formatted_date
@@ -342,7 +344,7 @@ try:
         
         year_dropdown = wait_for_element('#ctl00_InnerContent_ddlPeriod')
         year_dropdown.find_element(By.XPATH, f'//option[@value="{year}"]').click()
-        time.sleep(5)
+        # time.sleep(5)
 
     else:
         print("\nSelect a delivery period for Yearly:")
